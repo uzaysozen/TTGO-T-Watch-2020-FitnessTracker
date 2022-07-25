@@ -1,0 +1,99 @@
+
+# COM3505 Lab Assessment 2 Documentation
+
+## General Information
+
+A basic exercise tracker that can measure the number of steps, calories burned, and distance covered has been implemented for this project. Personal information such as height, weight, age, BMI, current measurements, and previously recorded measurements can be viewed on the watch. In addition, the target number of steps can be adjusted, and there is a progress wheel on the home page that shows how close this goal is. The IoT device used for this project is a LILYGO TTGO T-Watch 2020 with an ESP32 chip inside. After uploading firmware, it is a programmable wearable device and can be considered a smartwatch.
+
+## Technical Information
+
+**LILYGO TTGO T-Watch 2020 V1 Components and Features:**
+
+- Chipset ESP32
+- WiFi And Bluetooth
+- SRAM 520 KB SRAM
+- FLASH 16MB & PSRAM 8MB
+- Speaker
+- PMU : AXP202
+- Vibration Motor
+- PDM Microphone
+- RTC chip : PCF8563
+- Infrared signal transmitter
+- Touch screen chip : FT6236U
+- Triaxial accelerometer : BMA423
+- Function power button
+- 1.54 inch IPS 2D arc capacitive touch screen
+- BMA423 three-axis accelerometer with pedometer algorithm function
+
+A photo of the device:
+
+![Photo of the device](images/hardware.jpg)
+
+**Firmware:**
+
+The firmware consists of 5 pages in total, which can be swiped through within the watch or by pressing a button. 
+
+- Home Page
+  
+This is the main page which loads first when the device starts, and it includes the progress wheel, a clock and the current date. The progress wheel shows how close the person's step count is to their target steps as a percentage.
+
+![Photo of the home page](images/home_page.jpg)
+
+- Exercise Page
+
+This page shows current measurements such as current step count, calories burned in Cal, and distance covered in kilometres. All measurements are calculated according to the person's physical characteristics, which the person should provide on the profile page. There are two buttons. The button on the left resets the step count progress; thus, it resets the current exercise. The button on the right saves the recent activity to the cloud database if the internet connection is stable.
+
+![Photo of the exercise page](images/exercise.jpg)
+
+- Profile Page
+
+This page shows physical characteristics of the person, such as name, height, weight, gender, BMI, and age. It also includes a button which navigates to the profile form page.
+
+![Photo of the profile page](images/profile.jpg)
+
+- Profile Form Page
+  
+This page is where the person can edit the physical attributes mentioned above. In addition, the person can set their target steps on this page. The save button on the right saves the provided information to the flash memory of the watch, so it will be sufficient to enter the information once.
+
+![Photo of the profile form page](images/profile_form.jpg)
+
+- Past Exercises Page
+
+This page shows saved exercises of the person which is acquired from the cloud database. It shows informations and measurements such as name, date, calories burned, distance covered, step count and target steps. The page works if the internet connection is stable.
+
+![Photo of the past exercises page](images/past_exercises.jpg)
+
+- Additional Features
+  
+A menu bar on top of every page shows battery status in percentage and symbols. It also indicates wifi status. If a wifi connection is established, the wifi icon will be displayed; if not, it will disappear. The clock on the home page syncs with the internet clock if an internet connection is established. The physical button on the right side of the watch can turn on and off the sleep mode. If sleep mode is on, the watch consumes less energy and turns off the screen. A long press of the side button shuts down the watch. The TTGO Watch has its BMA423 accelerometer to count steps, and the TTGO T-Watch library provides an algorithm to calculate the step count. So, the TTGO T-Watch library was used to calculate steps, calculate battery percentage, and synchronize the watch clock. The library also provides a UI framework named [LVGL](https://docs.lvgl.io/latest/en/html/index.html), whose components were used to develop the watch's interface. The Cloud database was created as a real-time database in Google Firebase, supporting GET and POST requests used in this project and other requests.
+
+- Measurements
+  
+There are three measurements in the firmware for the exercises. Step count, distance covered in km and calories burned in Cal.
+
+Step count is measured directly by the watch's BMA423 accelerometer. 
+
+The distance covered is measured by multiplying the person's step count and step length. Step length is calculated by a person's height in meters and multiplying it with a scaling factor. The scaling factor is different for males and females. The final value is converted to kilometres and multiplied by step count. 
+
+The last measurement is calories burned, and it is calculated by calculating BMR. BMR is the Basal Metabolic Rate which is a value that indicates how many calories a person needs every day. It also gives information about how fast a person's metabolism is and how many calories they can burn during exercise. The BMR value is calculated differently for males and females. The calculation also needs information such as person's age, height and weight. The BMR value for the person is multiplied with a small scaling factor which is also different for males and females, to obtain a value which is calories burned per the person's steps. Then this value is multiplied by the step count to get calories burned in the exercise.
+
+![Photo of the BMR equations](images/BMR.png)
+
+
+## Testing
+
+The device was primarily tested by wearing it and walking around to see if desired results were shown on the pages. Apart from that, the form page was tested with various data. For places where only numbers should be entered, the keyboard here is set to be numeric only. The watch was tested with and without internet connection, and it was verified that all pages work without internet except the past exercises page which gets data from the cloud database. 
+
+## Self Assesment and Further Work
+
+If we evaluate the resulting firmware, it can be a little difficult for a person to understand which page the person is on, as the interface does not have a pagination system. Apart from that, it is not well understood whether the exercises were recorded to the cloud database, successfully or not. The person has to go to the past exercises page and check it out. Improvements can be made on these issues in the future. Apart from this, a more comprehensive exercise tracker can be made by using the watch's other unused sensors and actuators such as the speaker, microphone, and vibration motor more effectively. Graphs can be used to better illustrate the results of previous exercises.
+
+## References
+
+While developing this device and firmware, I have used [TTGO-TWatch library](https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library) and examples in it such as SimpleWatch, BMA423_StepCount and TimeSynchronization. Also, I was inspired by [DudleyWatch](https://github.com/wfdudley/T-watch-2020) example project which is also provided in the course GitLab repository. 
+
+For measurements:
+
+ https://www.healthline.com/health/what-is-basal-metabolic-rate#estimating-bmr
+
+ https://livehealthy.chron.com/pedometer-steps-vs-calories-burned-6328.html
