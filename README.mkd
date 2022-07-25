@@ -1,5 +1,5 @@
 
-# COM3505 Lab Assessment 2 Documentation
+# TTGO-T-Watch-2020-FitnessTracker
 
 ## General Information
 
@@ -16,7 +16,6 @@ A basic exercise tracker that can measure the number of steps, calories burned, 
 - Speaker
 - PMU : AXP202
 - Vibration Motor
-- PDM Microphone
 - RTC chip : PCF8563
 - Infrared signal transmitter
 - Touch screen chip : FT6236U
