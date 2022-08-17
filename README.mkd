@@ -26,7 +26,7 @@ A basic exercise tracker that can measure the number of steps, calories burned, 
 
 A photo of the device:
 
-![Photo of the device](images/hardware.jpg)
+<img src="images/hardware.jpg" alt="Hardware" height="500" width="300"/>
 
 **Firmware:**
 
@@ -36,31 +36,31 @@ The firmware consists of 5 pages in total, which can be swiped through within th
   
 This is the main page which loads first when the device starts, and it includes the progress wheel, a clock and the current date. The progress wheel shows how close the person's step count is to their target steps as a percentage.
 
-![Photo of the home page](images/home_page.jpg)
+<img src="images/home_page.jpg" alt="Home Page" height="500" width="300"/>
 
 - Exercise Page
 
 This page shows current measurements such as current step count, calories burned in Cal, and distance covered in kilometres. All measurements are calculated according to the person's physical characteristics, which the person should provide on the profile page. There are two buttons. The button on the left resets the step count progress; thus, it resets the current exercise. The button on the right saves the recent activity to the cloud database if the internet connection is stable.
 
-![Photo of the exercise page](images/exercise.jpg)
+<img src="images/exercise.jpg" alt="Exercise Page" height="500" width="300"/>
 
 - Profile Page
 
 This page shows physical characteristics of the person, such as name, height, weight, gender, BMI, and age. It also includes a button which navigates to the profile form page.
 
-![Photo of the profile page](images/profile.jpg)
+<img src="images/profile.jpg" alt="Profile Page" height="500" width="300"/>
 
 - Profile Form Page
   
 This page is where the person can edit the physical attributes mentioned above. In addition, the person can set their target steps on this page. The save button on the right saves the provided information to the flash memory of the watch, so it will be sufficient to enter the information once.
 
-![Photo of the profile form page](images/profile_form.jpg)
+<img src="images/profile_form.jpg" alt="Profile Form Page" height="500" width="300"/>
 
 - Past Exercises Page
 
 This page shows saved exercises of the person which is acquired from the cloud database. It shows informations and measurements such as name, date, calories burned, distance covered, step count and target steps. The page works if the internet connection is stable.
 
-![Photo of the past exercises page](images/past_exercises.jpg)
+<img src="images/past_exercises.jpg" alt="Past Exercises Page" height="500" width="300"/>
 
 - Additional Features
   
@@ -78,14 +78,6 @@ The last measurement is calories burned, and it is calculated by calculating BMR
 
 ![Photo of the BMR equations](images/BMR.png)
 
-
-## Testing
-
-The device was primarily tested by wearing it and walking around to see if desired results were shown on the pages. Apart from that, the form page was tested with various data. For places where only numbers should be entered, the keyboard here is set to be numeric only. The watch was tested with and without internet connection, and it was verified that all pages work without internet except the past exercises page which gets data from the cloud database. 
-
-## Self Assesment and Further Work
-
-If we evaluate the resulting firmware, it can be a little difficult for a person to understand which page the person is on, as the interface does not have a pagination system. Apart from that, it is not well understood whether the exercises were recorded to the cloud database, successfully or not. The person has to go to the past exercises page and check it out. Improvements can be made on these issues in the future. Apart from this, a more comprehensive exercise tracker can be made by using the watch's other unused sensors and actuators such as the speaker, microphone, and vibration motor more effectively. Graphs can be used to better illustrate the results of previous exercises.
 
 ## References
 
